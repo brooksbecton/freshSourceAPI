@@ -1,0 +1,23 @@
+{
+  "name": "sourcefresh",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "npm run build && node build/bin/www",
+    "build": "babel ./src -d build"
+  },
+  "dependencies": {
+    "body-parser": "~1.18.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "dotenv": "^5.0.1",
+    "express": "~4.15.5",
+    "mongoose": "^5.0.7",
+    "morgan": "~1.9.0",
+    "pluralize": "^7.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1"
+  }
+}

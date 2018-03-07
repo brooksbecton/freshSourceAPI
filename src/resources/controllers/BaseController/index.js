@@ -2,6 +2,9 @@ import { Router } from "express";
 import pluralize from "pluralize";
 import { ok, fail } from "./utils";
 
+const MAX_RESULTS = 10;
+``;
+
 export default class BaseController {
   constructor(model, key) {
     this.model = model;
@@ -37,7 +40,7 @@ export default class BaseController {
       .then(modelInstance => {
         for (var attribute in data) {
           if (
-            data.hasOwnProperty(attribute) &&
+            attribute in data &&
             attribute !== this.key &&
             attribute !== "_id"
           ) {

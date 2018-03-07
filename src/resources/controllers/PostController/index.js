@@ -1,8 +1,8 @@
 import BaseController from "./../BaseController";
-import User from "./../../../models/User";
+import Post from "./../../../models/Post";
 
 export default class UserController extends BaseController {
   constructor() {
-    super(User, "uid");
+    super(Post, "_id");
   }
 }

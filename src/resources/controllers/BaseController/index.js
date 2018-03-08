@@ -1,18 +1,24 @@
+// @flow
+
 import { Router } from "express";
+import type { MongooseModel } from 'mongoose';
 import pluralize from "pluralize";
 import { ok, fail } from "./utils";
 
 const MAX_RESULTS = 10;
-``;
 
 export default class BaseController {
-  constructor(model, key) {
+  model: MongooseModel;
+  modelName: string;
+  key: string | [string];
+
+  constructor(model: MongooseModel, key: string | [string]) {
     this.model = model;
     this.modelName = model.modelName.toLowerCase();
     this.key = key;
   }
 
-  create(data) {
+  create(data: {}) {
     return this.model.create(data).then(modelInstance => {
       var response = {};
       response[this.modelName] = modelInstance;
@@ -20,7 +26,7 @@ export default class BaseController {
     });
   }
 
-  read(id) {
+  read(id: string) {
     var filter = {};
     filter[this.key] = id;
 
@@ -31,7 +37,7 @@ export default class BaseController {
     });
   }
 
-  update(id, data) {
+  update(id: string, data: {}) {
     var filter = {};
     filter[this.key] = id;
 
@@ -57,7 +63,7 @@ export default class BaseController {
       });
   }
 
-  delete(id) {
+  delete(id: string) {
     const filter = {};
     filter[this.key] = id;
 

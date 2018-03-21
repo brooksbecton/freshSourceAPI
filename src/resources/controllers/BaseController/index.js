@@ -3,7 +3,6 @@ import pluralize from "pluralize";
 import { ok, fail } from "./utils";
 
 const MAX_RESULTS = 10;
-``;
 
 export default class BaseController {
   constructor(model, key) {
